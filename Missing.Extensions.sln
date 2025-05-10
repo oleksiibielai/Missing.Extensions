@@ -6,7 +6,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5821CEB1-1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Missing.Extensions.Stream", "src\Missing.Extensions.Stream\Missing.Extensions.Stream.csproj", "{A0B2FF42-8C91-4BFD-8BB3-7AC7A245AC83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Missing.Extensions.Stream.Tests", "test\Missing.Extensions.Stream.Tests\Missing.Extensions.Stream.Tests.csproj", "{5CFB3339-82C4-42AF-AA48-78769BA9ECD3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Missing.Extensions.Stream.Tests", "test\Missing.Extensions.Stream.Tests\Missing.Extensions.Stream.Tests.csproj", "{543EA4DD-38D2-4A92-9553-3FF2124B4839}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,16 +15,16 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A0B2FF42-8C91-4BFD-8BB3-7AC7A245AC83} = {1E416176-DE3A-4D17-8359-BD39C93E3190}
-		{5CFB3339-82C4-42AF-AA48-78769BA9ECD3} = {5821CEB1-1767-4EC7-9C69-7767FEE66648}
+		{543EA4DD-38D2-4A92-9553-3FF2124B4839} = {5821CEB1-1767-4EC7-9C69-7767FEE66648}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A0B2FF42-8C91-4BFD-8BB3-7AC7A245AC83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A0B2FF42-8C91-4BFD-8BB3-7AC7A245AC83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0B2FF42-8C91-4BFD-8BB3-7AC7A245AC83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0B2FF42-8C91-4BFD-8BB3-7AC7A245AC83}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5CFB3339-82C4-42AF-AA48-78769BA9ECD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5CFB3339-82C4-42AF-AA48-78769BA9ECD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5CFB3339-82C4-42AF-AA48-78769BA9ECD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5CFB3339-82C4-42AF-AA48-78769BA9ECD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{543EA4DD-38D2-4A92-9553-3FF2124B4839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{543EA4DD-38D2-4A92-9553-3FF2124B4839}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{543EA4DD-38D2-4A92-9553-3FF2124B4839}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{543EA4DD-38D2-4A92-9553-3FF2124B4839}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
