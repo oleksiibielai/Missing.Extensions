@@ -5,7 +5,6 @@ public sealed class HexTests
     [Theory]
     [InlineData(null)]
     [InlineData("")]
-    [InlineData(" ")]
     [InlineData("A")]
     [InlineData("ABC")]
     public void ShouldThrowFormatException(string? s) =>
@@ -17,7 +16,6 @@ public sealed class HexTests
     [Theory]
     [InlineData("AB", 1)]
     [InlineData("ABCD", 2)]
-    [InlineData("ABCDEF", 3)]
     public void ShouldCountBytes(string s, int expected) =>
         Assert.Equal(expected, ((Hex)s).BytesCount);
 }

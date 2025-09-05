@@ -14,7 +14,9 @@ internal readonly ref struct Hex
         _source = source;
     }
 
-    public static implicit operator Hex(string? source) => new(source?.Trim());
+    public static implicit operator Hex(string? source) => new(source);
+
+    public static implicit operator Hex(ReadOnlySpan<char> source) => new(source);
 
     public int BytesCount => _source.Length >> 1;
 }
