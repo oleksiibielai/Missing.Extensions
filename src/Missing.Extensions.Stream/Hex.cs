@@ -1,7 +1,10 @@
+using System.Buffers;
+
 namespace Missing.Extensions.Stream;
 
 internal readonly ref struct Hex
 {
+    private readonly int _length;
     private readonly ReadOnlySpan<char> _source;
 
     private Hex(ReadOnlySpan<char> source)
@@ -11,6 +14,7 @@ internal readonly ref struct Hex
             throw new FormatException("The input is not a valid hex string.");
         }
 
+        _length = source.Length >> 1;
         _source = source;
     }
 
@@ -18,7 +22,23 @@ internal readonly ref struct Hex
 
     public static implicit operator Hex(ReadOnlySpan<char> source) => new(source);
 
-    public static long operator +(Hex left, long right) => (left._source.Length >> 1) + right;
+    public static long operator +(Hex left, long right) => left._length + right;
 
     public static long operator +(long left, Hex right) => right + left;
+
+    internal bool IsMatch(System.IO.Stream stream)
+    {
+        Span<byte> bytes = stackalloc byte[_length];
+        var status = Convert.FromHexString(_source, bytes, out _, out _);
+
+        if (status != OperationStatus.Done)
+        {
+            return false;
+        }
+
+        Span<byte> buffer = stackalloc byte[_length];
+        stream.ReadExactly(buffer);
+
+        return bytes.SequenceEqual(buffer);
+    }
 }
