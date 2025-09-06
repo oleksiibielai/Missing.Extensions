@@ -12,10 +12,4 @@ public sealed class HexTests
         {
             Hex _ = s;
         });
-
-    [Theory]
-    [InlineData("AB", 1)]
-    [InlineData("ABCD", 2)]
-    public void ShouldCountBytes(string s, int expected) =>
-        Assert.Equal(expected, ((Hex)s).BytesCount);
 }

@@ -18,5 +18,7 @@ internal readonly ref struct Hex
 
     public static implicit operator Hex(ReadOnlySpan<char> source) => new(source);
 
-    public int BytesCount => _source.Length >> 1;
+    public static long operator +(Hex left, long right) => (left._source.Length >> 1) + right;
+
+    public static long operator +(long left, Hex right) => right + left;
 }

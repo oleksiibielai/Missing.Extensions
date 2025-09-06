@@ -27,4 +27,7 @@ internal readonly ref struct Sign
     public static implicit operator Sign(string? source) => new(source);
 
     public static implicit operator Sign(ReadOnlySpan<char> source) => new(source);
+
+    private bool CanMatch(System.IO.Stream stream) =>
+        stream is { CanRead: true, CanSeek: true } && stream.Length >= _offset + _hex;
 }
