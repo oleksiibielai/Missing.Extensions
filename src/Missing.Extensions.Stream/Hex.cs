@@ -4,17 +4,15 @@ namespace Missing.Extensions.Stream;
 
 internal readonly ref struct Hex
 {
-    private readonly int _length;
     private readonly ReadOnlySpan<char> _source;
 
     private Hex(ReadOnlySpan<char> source)
     {
-        if (int.DivRem(source.Length, 2) is not (> 0, 0))
+        if (source.IsEmpty || (source.Length & 1) != 0)
         {
             throw new FormatException("The input is not a valid hex string.");
         }
 
-        _length = source.Length >> 1;
         _source = source;
     }
 
@@ -22,13 +20,11 @@ internal readonly ref struct Hex
 
     public static implicit operator Hex(ReadOnlySpan<char> source) => new(source);
 
-    public static long operator +(Hex left, long right) => left._length + right;
+    public int BytesLength => _source.Length >> 1;
 
-    public static long operator +(long left, Hex right) => right + left;
-
-    internal bool IsMatch(System.IO.Stream stream)
+    public bool IsMatch(long offset, System.IO.Stream stream)
     {
-        Span<byte> bytes = stackalloc byte[_length];
+        Span<byte> bytes = stackalloc byte[BytesLength];
         var status = Convert.FromHexString(_source, bytes, out _, out _);
 
         if (status != OperationStatus.Done)
@@ -36,7 +32,8 @@ internal readonly ref struct Hex
             return false;
         }
 
-        Span<byte> buffer = stackalloc byte[_length];
+        Span<byte> buffer = stackalloc byte[BytesLength];
+        stream.Seek(offset, SeekOrigin.Begin);
         stream.ReadExactly(buffer);
 
         return bytes.SequenceEqual(buffer);

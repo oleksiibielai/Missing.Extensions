@@ -16,4 +16,20 @@ public sealed class SignTests
         {
             Sign _ = s;
         });
+
+    [Theory]
+    [MemberData(nameof(TestData.InvalidData), MemberType = typeof(TestData))]
+    public void ShouldNotMatchInvalidData(long offset, string s, System.IO.Stream stream)
+    {
+        Sign sign = $"{offset},{s}";
+        Assert.False(sign.IsMatch(stream));
+    }
+
+    [Theory]
+    [MemberData(nameof(TestData.ValidData), MemberType = typeof(TestData))]
+    public void ShouldMatchValidData(long offset, string s, System.IO.Stream stream)
+    {
+        Sign sign = $"{offset},{s}";
+        Assert.True(sign.IsMatch(stream));
+    }
 }
