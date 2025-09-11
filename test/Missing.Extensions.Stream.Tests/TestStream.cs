@@ -7,9 +7,9 @@ internal sealed class TestStream : MemoryStream
 
     public static TestStream Empty => new([]);
 
-    public static TestStream NotReadable => new([0], false);
+    public static TestStream Unreadable => new([0], false);
 
-    public static TestStream NotSeekable => new([0], true, false);
+    public static TestStream Unseekable => new([0], true, false);
 
     public static TestStream Closed => new([0], false, false);
 

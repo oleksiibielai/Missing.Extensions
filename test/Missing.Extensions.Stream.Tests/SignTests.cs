@@ -18,6 +18,15 @@ public sealed class SignTests
         });
 
     [Theory]
+    [MemberData(nameof(TestData.UnmatchableData), MemberType = typeof(TestData))]
+    public void ShouldThrowNotSupportedException(long offset, string s, System.IO.Stream stream) =>
+        Assert.Throws<NotSupportedException>(() =>
+        {
+            Sign sign = $"{offset},{s}";
+            sign.IsMatch(stream);
+        });
+
+    [Theory]
     [MemberData(nameof(TestData.InvalidData), MemberType = typeof(TestData))]
     public void ShouldNotMatchInvalidData(long offset, string s, System.IO.Stream stream)
     {
