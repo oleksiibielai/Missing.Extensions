@@ -1,6 +1,6 @@
 namespace Missing.Extensions.Stream;
 
-internal readonly ref struct Sign
+internal readonly ref struct Sign : IParsable<Sign>
 {
     private readonly long _offset;
     private readonly Hex _hex;
@@ -23,9 +23,9 @@ internal readonly ref struct Sign
         _hex = source[ranges[1]];
     }
 
-    public static implicit operator Sign(string? source) => new(source);
+    public static implicit operator Sign(string? s) => new(s);
 
-    public static implicit operator Sign(ReadOnlySpan<char> source) => new(source);
+    public static implicit operator Sign(ReadOnlySpan<char> s) => new(s);
 
     public bool IsMatch(System.IO.Stream stream) =>
         stream is not { CanRead: true, CanSeek: true }

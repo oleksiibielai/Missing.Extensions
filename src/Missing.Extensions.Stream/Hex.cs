@@ -2,7 +2,7 @@ using System.Buffers;
 
 namespace Missing.Extensions.Stream;
 
-internal readonly ref struct Hex
+internal readonly ref struct Hex : IParsable<Hex>
 {
     private readonly ReadOnlySpan<char> _source;
 
@@ -16,9 +16,9 @@ internal readonly ref struct Hex
         _source = source;
     }
 
-    public static implicit operator Hex(string? source) => new(source);
+    public static implicit operator Hex(string? s) => new(s);
 
-    public static implicit operator Hex(ReadOnlySpan<char> source) => new(source);
+    public static implicit operator Hex(ReadOnlySpan<char> s) => new(s);
 
     public int BytesLength => _source.Length >> 1;
 
