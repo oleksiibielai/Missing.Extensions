@@ -1,3 +1,5 @@
+using Missing.Extensions.Stream.Tests.Abstractions;
+
 namespace Missing.Extensions.Stream.Tests;
 
 public sealed class SignTests : TestsBase

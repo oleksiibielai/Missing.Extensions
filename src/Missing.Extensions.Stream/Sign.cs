@@ -1,6 +1,8 @@
+using Missing.Extensions.Stream.Abstractions;
+
 namespace Missing.Extensions.Stream;
 
-internal readonly ref struct Sign : IParsable<Sign>
+internal readonly ref struct Sign : IRefParsable<Sign>
 {
     private readonly long _offset;
     private readonly Hex _hex;

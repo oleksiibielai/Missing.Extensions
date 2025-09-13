@@ -1,8 +1,9 @@
 using System.Buffers;
+using Missing.Extensions.Stream.Abstractions;
 
 namespace Missing.Extensions.Stream;
 
-internal readonly ref struct Hex : IParsable<Hex>
+internal readonly ref struct Hex : IRefParsable<Hex>
 {
     private readonly ReadOnlySpan<char> _source;
 
