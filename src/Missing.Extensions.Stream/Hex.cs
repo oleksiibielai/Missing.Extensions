@@ -3,7 +3,7 @@ using Missing.Extensions.Stream.Abstractions;
 
 namespace Missing.Extensions.Stream;
 
-internal readonly ref struct Hex : IRefParsable<Hex>
+internal readonly ref struct Hex : IParsableRef<Hex>
 {
     private readonly ReadOnlySpan<char> _source;
 
