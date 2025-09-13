@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <ItemGroup>
-        <EmbeddedResource Include="Resources\MimeTypes.db"/>
+        <EmbeddedResource Include="Resources\MediaTypes.db"/>
     </ItemGroup>
 </Project>
