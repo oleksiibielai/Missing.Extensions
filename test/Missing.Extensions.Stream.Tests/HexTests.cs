@@ -19,7 +19,9 @@ public sealed class HexTests : TestsBase
         Using<Hex>(s, hex => Assert.Equal(expected, hex.BytesLength));
 
     [Theory]
-    [MemberData(nameof(TestData.ValidData), MemberType = typeof(TestData))]
+    [MemberData(
+        nameof(TestData.ValidData),
+        MemberType = typeof(TestData))]
     public void ShouldMatchValidData(long offset, string s, System.IO.Stream stream) =>
         Using<Hex>(s, hex => Assert.True(hex.IsMatch(offset, stream)));
 }
