@@ -1,6 +1,5 @@
 using System.Reflection;
-using Missing.Extensions.Stream.Models;
-using Missing.Extensions.Stream.Tests.Utils;
+using Missing.Extensions.Stream.Tests.Helpers;
 
 namespace Missing.Extensions.Stream.Tests;
 
@@ -19,12 +18,11 @@ public sealed class MediaTypeTests
         MemberType = typeof(TestData))]
     public async Task ShouldBeThreadSafe(
         string name, string extension, System.IO.Stream stream) =>
-        Assert.Null(await Record.ExceptionAsync(() => Task.WhenAll(
-            Enumerable.Range(1, 10).Select(_ => Task.Factory.StartNew(() =>
-                Assert.Equal(new MediaType(name, extension), stream.GetMediaType(true)))))));
+        await Task.WhenAll(Enumerable.Range(1, 10).Select(_ => Task.Factory.StartNew(() =>
+            Assert.Equal(new MediaType(name, extension), stream.GetMediaType(true)))));
 
     [Fact]
-    public void ShouldCheckResourceStream() => Assert.Equal(
+    public void ShouldVerifyResourceStream() => Assert.Equal(
         new MediaType("application/gzip", "gz"), Assembly.GetAssembly(typeof(Extensions))!
             .GetManifestResourceStream(typeof(Extensions), "Resources.MediaTypes.db")!
             .GetMediaType());

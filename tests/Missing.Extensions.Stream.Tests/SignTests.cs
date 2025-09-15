@@ -1,5 +1,5 @@
 using Missing.Extensions.Stream.Tests.Abstractions;
-using Missing.Extensions.Stream.Tests.Utils;
+using Missing.Extensions.Stream.Tests.Helpers;
 
 namespace Missing.Extensions.Stream.Tests;
 

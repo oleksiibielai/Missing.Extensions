@@ -1,6 +1,5 @@
 using System.Reflection;
 using Missing.Extensions.Stream.Abstractions;
-using Missing.Extensions.Stream.Models;
 using static System.Text.Json.JsonSerializer;
 using static System.Text.Json.JsonSerializerOptions;
 
@@ -32,6 +31,5 @@ internal sealed class ResourceReader(string name) : IMediaTypesReader
             "The input stream is empty or invalid.");
     }
 
-    // ReSharper disable once ClassNeverInstantiated.Local
     private sealed record MimeType(string Mime, string[] Signs);
 }

@@ -1,4 +1,4 @@
-namespace Missing.Extensions.Stream.Tests.Utils;
+namespace Missing.Extensions.Stream.Tests.Helpers;
 
 internal sealed class TestStream : MemoryStream
 {

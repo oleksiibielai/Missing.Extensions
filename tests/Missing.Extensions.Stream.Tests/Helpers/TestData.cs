@@ -1,6 +1,6 @@
-using static Missing.Extensions.Stream.Tests.Utils.TestStream;
+using static Missing.Extensions.Stream.Tests.Helpers.TestStream;
 
-namespace Missing.Extensions.Stream.Tests.Utils;
+namespace Missing.Extensions.Stream.Tests.Helpers;
 
 public static class TestData
 {
