@@ -1,6 +1,10 @@
+using System.Reflection;
+using Missing.Extensions.Stream.Models;
+using Missing.Extensions.Stream.Tests.Utils;
+
 namespace Missing.Extensions.Stream.Tests;
 
-public sealed class ExtensionsTests
+public sealed class MediaTypeTests
 {
     [Theory]
     [MemberData(
@@ -17,5 +21,11 @@ public sealed class ExtensionsTests
         string name, string extension, System.IO.Stream stream) =>
         Assert.Null(await Record.ExceptionAsync(() => Task.WhenAll(
             Enumerable.Range(1, 10).Select(_ => Task.Factory.StartNew(() =>
-                Assert.Equal((name, extension), stream.GetMediaType(true)))))));
+                Assert.Equal(new MediaType(name, extension), stream.GetMediaType(true)))))));
+
+    [Fact]
+    public void ShouldCheckResourceStream() => Assert.Equal(
+        new MediaType("application/gzip", "gz"), Assembly.GetAssembly(typeof(Extensions))!
+            .GetManifestResourceStream(typeof(Extensions), "Resources.MediaTypes.db")!
+            .GetMediaType());
 }

@@ -1,4 +1,5 @@
 using Missing.Extensions.Stream.Tests.Abstractions;
+using Missing.Extensions.Stream.Tests.Utils;
 
 namespace Missing.Extensions.Stream.Tests;
 

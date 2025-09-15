@@ -2,11 +2,11 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1E416176-DE3A-4D17-8359-BD39C93E3190}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5821CEB1-1767-4EC7-9C69-7767FEE66648}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5821CEB1-1767-4EC7-9C69-7767FEE66648}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Missing.Extensions.Stream", "src\Missing.Extensions.Stream\Missing.Extensions.Stream.csproj", "{A0B2FF42-8C91-4BFD-8BB3-7AC7A245AC83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Missing.Extensions.Stream.Tests", "test\Missing.Extensions.Stream.Tests\Missing.Extensions.Stream.Tests.csproj", "{543EA4DD-38D2-4A92-9553-3FF2124B4839}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Missing.Extensions.Stream.Tests", "tests\Missing.Extensions.Stream.Tests\Missing.Extensions.Stream.Tests.csproj", "{543EA4DD-38D2-4A92-9553-3FF2124B4839}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

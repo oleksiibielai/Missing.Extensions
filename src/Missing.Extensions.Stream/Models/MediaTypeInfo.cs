@@ -1,18 +1,15 @@
-namespace Missing.Extensions.Stream;
+namespace Missing.Extensions.Stream.Models;
 
-internal readonly struct MediaType(
+internal readonly struct MediaTypeInfo(
     string name,
     string extension,
     string[] signs)
 {
-    private const string Unknown =
-        nameof(Unknown);
-
     private readonly string? _name = name;
     private readonly string? _extension = extension;
 
-    public static implicit operator (string Name, string Extension)(MediaType x) =>
-        (x._name ?? Unknown, x._extension ?? Unknown);
+    public static implicit operator MediaType(MediaTypeInfo x) =>
+        new(x._name ?? "Unknown", x._extension ?? "Unknown");
 
     public bool IsMatch(System.IO.Stream stream) =>
         Array.Exists(signs, sign => IsMatch(sign, stream));

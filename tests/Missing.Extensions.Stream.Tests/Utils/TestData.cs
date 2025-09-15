@@ -1,6 +1,6 @@
-using static Missing.Extensions.Stream.Tests.TestStream;
+using static Missing.Extensions.Stream.Tests.Utils.TestStream;
 
-namespace Missing.Extensions.Stream.Tests;
+namespace Missing.Extensions.Stream.Tests.Utils;
 
 public static class TestData
 {
@@ -29,6 +29,8 @@ public static class TestData
 
     public static TheoryDataRow<System.IO.Stream>[] Unmatchable =>
     [
-        new(Unreadable), new(Unseekable), new(Closed)
+        new(Unreadable),
+        new(Unseekable),
+        new(Closed)
     ];
 }

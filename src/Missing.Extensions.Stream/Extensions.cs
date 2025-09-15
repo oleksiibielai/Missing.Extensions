@@ -1,4 +1,5 @@
 using System.IO.Compression;
+using Missing.Extensions.Stream.Models;
 using Missing.Extensions.Stream.Readers;
 using static System.IO.Compression.CompressionMode;
 
@@ -8,15 +9,16 @@ public static class Extensions
 {
     private static readonly ResourceReader Reader = new("MediaTypes.db");
 
-    public static (string Name, string Extension) GetMediaType(
+    public static MediaType GetMediaType(
         this System.IO.Stream stream, bool leaveOpen = false)
     {
         lock (stream)
         {
             try
             {
-                var mediaTypes = Reader.ReadMediaTypes();
-                return Array.Find(mediaTypes, x => x.IsMatch(stream));
+                return Array.Find(
+                    Reader.ReadMediaTypes(),
+                    info => info.IsMatch(stream));
             }
             finally
             {
