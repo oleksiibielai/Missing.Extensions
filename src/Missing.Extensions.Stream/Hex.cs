@@ -21,11 +21,11 @@ internal readonly ref struct Hex : IParsableRef<Hex>
 
     public static implicit operator Hex(ReadOnlySpan<char> s) => new(s);
 
-    public int BytesLength => _source.Length >> 1;
+    public static implicit operator int(Hex hex) => hex._source.Length >> 1;
 
     public bool IsMatch(long offset, System.IO.Stream stream)
     {
-        Span<byte> bytes = stackalloc byte[BytesLength];
+        Span<byte> bytes = stackalloc byte[this];
         var status = Convert.FromHexString(_source, bytes, out _, out _);
 
         if (status != OperationStatus.Done)
@@ -33,9 +33,12 @@ internal readonly ref struct Hex : IParsableRef<Hex>
             return false;
         }
 
-        Span<byte> buffer = stackalloc byte[BytesLength];
-        stream.Seek(offset, SeekOrigin.Begin);
-        stream.ReadExactly(buffer);
+        Span<byte> buffer = stackalloc byte[this];
+        lock (stream)
+        {
+            stream.Seek(offset, SeekOrigin.Begin);
+            stream.ReadExactly(buffer);
+        }
 
         return bytes.SequenceEqual(buffer);
     }

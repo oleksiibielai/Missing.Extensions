@@ -29,13 +29,8 @@ internal readonly ref struct Sign : IParsableRef<Sign>
 
     public static implicit operator Sign(ReadOnlySpan<char> s) => new(s);
 
-    public bool IsMatch(System.IO.Stream stream)
-    {
-        lock (stream)
-        {
-            return stream is not { CanRead: true, CanSeek: true }
-                ? throw new NotSupportedException("Stream does not support matching.")
-                : stream.Length >= _offset + _hex.BytesLength && _hex.IsMatch(_offset, stream);
-        }
-    }
+    public bool IsMatch(System.IO.Stream stream) =>
+        stream is not { CanRead: true, CanSeek: true }
+            ? throw new NotSupportedException("Stream does not support matching.")
+            : stream.Length >= _offset + _hex && _hex.IsMatch(_offset, stream);
 }

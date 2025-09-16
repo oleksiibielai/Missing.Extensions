@@ -1,8 +1,13 @@
 namespace Missing.Extensions.Stream;
 
-public readonly record struct MediaType(string Name, string Extension);
+public readonly record struct MediaType(
+    string Name,
+    string Extension);
 
-internal readonly struct MediaTypeInfo(string name, string extension, string[] signs)
+internal readonly struct MediaTypeInfo(
+    string name,
+    string extension,
+    string[] signs)
 {
     private readonly string? _name = name;
     private readonly string? _extension = extension;

@@ -14,12 +14,6 @@ public sealed class HexTests : TestsBase
         Assert.Throws<FormatException>(() => Using<Hex>(s, _ => { }));
 
     [Theory]
-    [InlineData("AB", 1)]
-    [InlineData("ABCD", 2)]
-    public void ShouldCalculateBytesLength(string s, int expected) =>
-        Using<Hex>(s, hex => Assert.Equal(expected, hex.BytesLength));
-
-    [Theory]
     [MemberData(
         nameof(TestData.ValidData),
         MemberType = typeof(TestData))]

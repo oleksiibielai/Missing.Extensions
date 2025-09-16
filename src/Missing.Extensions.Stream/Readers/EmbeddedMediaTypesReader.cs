@@ -5,7 +5,7 @@ using static System.Text.Json.JsonSerializerOptions;
 
 namespace Missing.Extensions.Stream.Readers;
 
-internal sealed class ResourceReader(string name) : IMediaTypesReader
+internal sealed class EmbeddedMediaTypesReader(string name) : IMediaTypesReader
 {
     public MediaTypeInfo[] ReadMediaTypes()
     {
