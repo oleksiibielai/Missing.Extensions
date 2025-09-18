@@ -25,7 +25,7 @@ internal readonly ref struct Hex : IParsableRef<Hex>
 
     public bool IsMatch(long offset, System.IO.Stream stream)
     {
-        Span<byte> bytes = stackalloc byte[this];
+        scoped Span<byte> bytes = stackalloc byte[this];
         var status = Convert.FromHexString(_source, bytes, out _, out _);
 
         if (status != OperationStatus.Done)
@@ -33,7 +33,7 @@ internal readonly ref struct Hex : IParsableRef<Hex>
             return false;
         }
 
-        Span<byte> buffer = stackalloc byte[this];
+        scoped Span<byte> buffer = stackalloc byte[this];
         lock (stream)
         {
             stream.Seek(offset, SeekOrigin.Begin);

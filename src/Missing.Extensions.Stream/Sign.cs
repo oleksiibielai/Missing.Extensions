@@ -14,7 +14,7 @@ internal readonly ref struct Sign : IParsableRef<Sign>
             throw new FormatException("The input is not a valid sign string.");
         }
 
-        Span<Range> ranges = stackalloc Range[2];
+        scoped Span<Range> ranges = stackalloc Range[2];
         source.Split(ranges, ',');
 
         if (!long.TryParse(source[ranges[0]], out _offset))
