@@ -1,6 +1,18 @@
 <Project>
     <Import Project="$(MSBuildThisFileDirectory)\..\Directory.Build.props"/>
+    <PropertyGroup>
+        <Version>1.0.0</Version>
+        <Authors>Oleksii Bielai</Authors>
+        <Copyright>Copyright (c) Oleksii Bielai $(Year)</Copyright>
+        <PackageProjectUrl>https://github.com/oleksiibielai/Missing.Extensions</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/oleksiibielai/Missing.Extensions.git</RepositoryUrl>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
     <ItemGroup>
         <InternalsVisibleTo Include="$(MSBuildProjectName).Tests"/>
+        <None Include="$(MSBuildThisFileDirectory)\..\LICENSE.txt" Pack="true" PackagePath=""/>
+        <None Include="$(MSBuildThisFileDirectory)\..\README.md" Pack="true" PackagePath=""/>
     </ItemGroup>
 </Project>

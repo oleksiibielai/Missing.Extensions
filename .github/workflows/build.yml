@@ -1,0 +1,67 @@
+name: Build and publish
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  packages: write
+  id-token: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Restore dependencies
+        run: |
+          dotnet restore
+
+      - name: Build projects
+        run: |
+          dotnet build \
+            --configuration Release \
+            --no-restore
+
+      - name: Run tests
+        run: |
+          dotnet test \
+            --configuration Release \
+            --no-build
+
+      - name: Create packages
+        run: |
+          dotnet pack \
+            --configuration Release \
+            --output ./artifacts \
+            --no-build
+
+      - name: Publish GitHub packages
+        run: |
+          dotnet nuget push ./artifacts/*.nupkg \
+            --api-key ${{ secrets.GITHUB_TOKEN }} \
+            --source https://nuget.pkg.github.com/oleksiibielai/index.json \
+            --skip-duplicate
+
+      - name: Exchange GitHub OIDC token for NuGet API key
+        uses: NuGet/login@v1
+        id: nuget_api_key
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
+      - name: Publish NuGet packages
+        run: |
+          dotnet nuget push ./artifacts/*.nupkg \
+            --api-key ${{steps.nuget_api_key.outputs.NUGET_API_KEY}} \
+            --source https://api.nuget.org/v3/index.json \
+            --skip-duplicate

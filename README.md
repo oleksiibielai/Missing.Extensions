@@ -1,8 +1,10 @@
 # Missing.Extensions
 
-[![Build Status](https://github.com/oleksiibielai/Missing.Extensions/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/oleksiibielai/Missing.Extensions/actions)
+[![Build and publish](https://github.com/oleksiibielai/Missing.Extensions/actions/workflows/build.yml/badge.svg)](https://github.com/oleksiibielai/Missing.Extensions/actions/workflows/build.yml)
 
 ## Missing.Extensions.Stream
+
+[![GitHub Packages](https://img.shields.io/badge/GitHub%20Packages-Missing.Extensions.Stream-blue)](https://github.com/users/oleksiibielai/packages/nuget/package/Missing.Extensions.Stream)
 
 Detects media type (MIME type) for `System.IO.Stream` by checking its signature.
 

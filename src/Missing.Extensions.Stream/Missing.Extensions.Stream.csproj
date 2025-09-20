@@ -1,4 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <Description>Detects media type (MIME type) for System.IO.Stream by checking its signature.</Description>
+        <PackageTags>extension;stream;mediatype;mimetype;mime;file;signature</PackageTags>
+    </PropertyGroup>
     <ItemGroup>
         <EmbeddedResource Include="Resources\MediaTypes.db"/>
     </ItemGroup>

@@ -1,6 +1,7 @@
 <Project>
     <Import Project="$(MSBuildThisFileDirectory)\..\Directory.Build.props"/>
     <PropertyGroup>
+        <IsPackable>false</IsPackable>
         <ProjectReferenceName>$(MSBuildProjectName.TrimEnd('.Tests'))</ProjectReferenceName>
     </PropertyGroup>
     <ItemGroup>
