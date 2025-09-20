@@ -17,29 +17,15 @@ jobs:
         with:
           dotnet-version: 9.0.x
       - name: Restore dependencies
-        run: |-
-          dotnet restore
+        run: dotnet restore
       - name: Build projects
-        run: |-
-          dotnet build
-          --configuration Release
-          --no-restore
+        run: dotnet build --configuration Release --no-restore
       - name: Run tests
-        run: |-
-          dotnet test
-            --configuration Release
-            --no-build
+        run: dotnet test --configuration Release --no-build
       - name: Create NuGet packages
-        run: |-
-          dotnet pack
-            --configuration Release
-            --output ./artifacts
-            --no-build
+        run: dotnet pack --configuration Release --no-build --output ./artifacts
       - name: Publish NuGet packages
-        run: |-
+        run: |
           for nupkg in ./artifacts/*.nupkg; do
-            dotnet nuget push $nupkg
-              --source https://api.nuget.org/v3/index.json
-              --api-key ${{ secrets.NUGET_API_KEY }}
-              --skip-duplicate
+            dotnet nuget push $nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
           done
