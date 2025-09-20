@@ -1,5 +1,10 @@
 <Project>
     <Import Project="$(MSBuildThisFileDirectory)\..\Directory.Build.props"/>
+    <PropertyGroup>
+        <RepositoryUrl>https://github.com/oleksiibielai/Missing.Extensions</RepositoryUrl>
+        <Authors>Oleksii Bielai</Authors>
+        <Version>1.0.0-preview.1</Version>
+    </PropertyGroup>
     <ItemGroup>
         <InternalsVisibleTo Include="$(MSBuildProjectName).Tests"/>
     </ItemGroup>
