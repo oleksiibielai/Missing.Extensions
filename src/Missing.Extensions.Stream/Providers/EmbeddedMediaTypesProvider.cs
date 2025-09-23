@@ -3,11 +3,11 @@ using Missing.Extensions.Stream.Abstractions;
 using static System.Text.Json.JsonSerializer;
 using static System.Text.Json.JsonSerializerOptions;
 
-namespace Missing.Extensions.Stream.Readers;
+namespace Missing.Extensions.Stream.Providers;
 
-internal sealed class EmbeddedMediaTypesReader(string name) : IMediaTypesReader
+internal sealed class EmbeddedMediaTypesProvider(string name) : IMediaTypesProvider
 {
-    public MediaTypeInfo[] ReadMediaTypes()
+    public MediaTypeInfo[] GetMediaTypes()
     {
         using var stream = new MemoryStream();
         GetResourceStream(name).DecompressTo(stream);

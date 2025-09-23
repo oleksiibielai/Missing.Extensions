@@ -4,7 +4,8 @@
 
 ## Missing.Extensions.Stream
 
-[![GitHub Packages](https://img.shields.io/badge/GitHub%20Packages-Missing.Extensions.Stream-blue)](https://github.com/users/oleksiibielai/packages/nuget/package/Missing.Extensions.Stream)
+[![NuGet Version](https://img.shields.io/nuget/v/Missing.Extensions.Stream)](https://www.nuget.org/packages/Missing.Extensions.Stream)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/Missing.Extensions.Stream)](https://www.nuget.org/packages/Missing.Extensions.Stream)
 
 Detects media type (MIME type) for `System.IO.Stream` by checking its signature.
 

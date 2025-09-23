@@ -1,21 +1,21 @@
 using Missing.Extensions.Stream.Abstractions;
 
-namespace Missing.Extensions.Stream.Readers;
+namespace Missing.Extensions.Stream.Providers;
 
-internal sealed class CachedMediaTypesReader(
-    IMediaTypesReader reader) : IMediaTypesReader
+internal sealed class CachedMediaTypesProvider(
+    IMediaTypesProvider provider) : IMediaTypesProvider
 {
     private readonly WeakReference<MediaTypeInfo[]> _cache =
-        new(reader.ReadMediaTypes());
+        new(provider.GetMediaTypes());
 
-    public MediaTypeInfo[] ReadMediaTypes()
+    public MediaTypeInfo[] GetMediaTypes()
     {
         if (_cache.TryGetTarget(out var mediaTypes))
         {
             return mediaTypes;
         }
 
-        mediaTypes = reader.ReadMediaTypes();
+        mediaTypes = provider.GetMediaTypes();
         _cache.SetTarget(mediaTypes);
         return mediaTypes;
     }

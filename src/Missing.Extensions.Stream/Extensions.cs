@@ -1,13 +1,13 @@
 using System.IO.Compression;
-using Missing.Extensions.Stream.Readers;
+using Missing.Extensions.Stream.Providers;
 using static System.IO.Compression.CompressionMode;
 
 namespace Missing.Extensions.Stream;
 
 public static class Extensions
 {
-    private static readonly CachedMediaTypesReader MediaTypesReader =
-        new(new EmbeddedMediaTypesReader("MediaTypes.db"));
+    private static readonly CachedMediaTypesProvider MediaTypesProvider =
+        new(new EmbeddedMediaTypesProvider("MediaTypes.db"));
 
     public static MediaType GetMediaType(
         this System.IO.Stream stream, bool leaveOpen = false)
@@ -15,7 +15,7 @@ public static class Extensions
         try
         {
             return Array.Find(
-                MediaTypesReader.ReadMediaTypes(),
+                MediaTypesProvider.GetMediaTypes(),
                 mediaType => mediaType.IsMatch(stream));
         }
         finally
